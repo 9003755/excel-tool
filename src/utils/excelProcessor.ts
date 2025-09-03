@@ -249,11 +249,10 @@ function updateMonthInColumns(
         if (targetFound) {
           console.log(`🔄 替换单元格 ${cellAddress}: "${sourceText}" -> "${newValue}"`)
           
-          // 更新单元格值，保持原有格式
+          // 更新单元格值，完全保持原有格式和类型
           worksheet[cellAddress] = {
-            ...cell,
-            v: newValue,
-            t: 's' // 设置为字符串类型以保持格式
+            ...cell, // 保持所有原有属性，包括类型(t)和数字格式(z)
+            v: newValue // 只更新值
           }
           
           console.log(`✅ 替换完成: ${cellAddress} = "${newValue}"`)
